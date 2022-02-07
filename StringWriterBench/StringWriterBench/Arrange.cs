@@ -6,10 +6,35 @@ using System.Text;
 
 namespace StringWriterBench
 {
-	public static class Arrange
+	public static class Lipsum
 	{
 		private const String _lipsum = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi enim, ultricies sed sollicitudin ut, vestibulum vitae dui. Mauris porta vitae purus sed tristique. Aliquam et leo auctor, dignissim nulla et, porttitor leo. Integer bibendum lobortis sapien ut suscipit. Integer malesuada velit nec metus consequat, luctus pellentesque sapien fermentum. Phasellus libero risus, convallis non condimentum non, mollis vitae erat. Suspendisse pellentesque aliquam eleifend. Donec sodales suscipit orci, et malesuada urna aliquet non.";
 
+		public static void AppendLipsumSubstring( StringBuilder sb, Random rng )
+		{
+			Int32 lipsumStart  = rng.Next( maxValue: _lipsum.Length );
+
+			Int32 lipsumMaxLength = Math.Min( 20, _lipsum.Length - lipsumStart );
+
+			Int32 lipsumLength = rng.Next( maxValue: lipsumMaxLength );
+
+			_ = sb.Append( _lipsum, startIndex: lipsumStart, count: lipsumLength );
+		}
+
+		public static String GetLipsumSubstring( Random rng )
+		{
+			Int32 lipsumStart  = rng.Next( maxValue: _lipsum.Length );
+
+			Int32 lipsumMaxLength = Math.Min( 20, _lipsum.Length - lipsumStart );
+
+			Int32 lipsumLength = rng.Next( maxValue: lipsumMaxLength );
+
+			return _lipsum.Substring( startIndex: lipsumStart, length: lipsumLength );
+		}
+	}
+
+	public static class Arrange
+	{
 		private static readonly String[] _i32Fmts = new[] { "N0", "N2", "d", "C2", "E6", "X8" };
 
 		private static readonly IReadOnlyList<( String format, Object[] args )> _runs = CreateRuns();
@@ -23,7 +48,7 @@ namespace StringWriterBench
 			return Enumerable
 				.Range( start: 0, count: 1024 )
 				.Select( n => (
-					format: CreateCompositeFormatString( placeholderCount: n, rngSeed: rng.Next(), reusableSB ),
+					format: CreateCompositeFormatString    ( placeholderCount: n, rngSeed: rng.Next(), reusableSB ),
 					args  : CreateCompositeFormatStringArgs( length: n, rngSeed: rng.Next() )
 				) )
 				.ToList();
@@ -38,12 +63,7 @@ namespace StringWriterBench
 				for( Int32 i = 0; i < placeholderCount; i++ )
 				{
 					// Append random text:
-					{
-						Int32 lipsumStart  = rng.Next( maxValue: _lipsum.Length );
-						Int32 lipsumLength = rng.Next( maxValue: Math.Min( 10, _lipsum.Length - lipsumStart ) ); // lipsumLength is random number between 0-10, *or* 0-(remaining lipsum chars)
-
-						_ = sb.Append( _lipsum, startIndex: lipsumStart, count: lipsumLength );
-					}
+					Lipsum.AppendLipsumSubstring( sb, rng );
 
 					_ = sb.Append( ' ' );
 
@@ -105,21 +125,28 @@ namespace StringWriterBench
 
 			Random rng = new Random( Seed: rngSeed );
 
-			// For now, use only Int32 values. Use the rngSeed as initial value for proof of consistent rng values:
-			Object[] arr = new Object[ length ];
-			arr[0] = rngSeed;
+			// Use the rngSeed for `compositeFormatArgs[0]` as proof of consistent rng values.
+
+			Object[] compositeFormatArgs = new Object[ length ];
+			compositeFormatArgs[0] = rngSeed;
 			for( Int32 i = 1; i < length; i++ )
 			{
-				arr[i] = rng.Next();
-
-				// ...with some nulls:
-				if( rng.NextDouble() > 0.9f ) // 10% chance
+				Double rand = rng.NextDouble();
+				if( rand > 0.9d ) // 10% chance
 				{
-					arr[i] = null;
+					compositeFormatArgs[i] = null;
+				}
+				else if( rand > 0.4d ) // 50% chance of String
+				{
+					compositeFormatArgs[i] = Lipsum.GetLipsumSubstring( rng );
+				}
+				else // 40% chance of Int32
+				{
+					compositeFormatArgs[i] = rng.Next();
 				}
 			}
 
-			return arr;
+			return compositeFormatArgs;
 		}
 
 	}
