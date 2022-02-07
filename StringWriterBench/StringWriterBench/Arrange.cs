@@ -47,32 +47,86 @@ namespace StringWriterBench
 
 			return Enumerable
 				.Range( start: 0, count: 1024 )
-				.Select( n => (
-					format: CreateCompositeFormatString    ( placeholderCount: n, rngSeed: rng.Next(), reusableSB ),
-					args  : CreateCompositeFormatStringArgs( length: n, rngSeed: rng.Next() )
+				.Select( n => ( n, rngSeed: rng.Next() ) )
+				.Select( t => ( t.n, t.rngSeed, types: GetRunFormatArgTypes( n: t.n, valueCount: t.n, t.rngSeed ).ToList() ) )
+				.Select( t => (
+
+					format: CreateCompositeFormatString    ( t.n, valueCount: t.n, rngSeed: t.rngSeed, t.types, reusableSB ),
+					args  : CreateCompositeFormatStringArgs( t.n, valueCount: t.n, rngSeed: t.rngSeed, t.types )
 				) )
 				.ToList();
 		}
 
-		private static String CreateCompositeFormatString( Int32 placeholderCount, Int32 rngSeed, StringBuilder sb )
+		private static IEnumerable<Type> GetRunFormatArgTypes( Int32 n, Int32 valueCount, Int32 rngSeed )
 		{
+			Random rng = new Random( Seed: rngSeed );
+
+			for( Int32 i = 0; i < valueCount; i++ )
+			{
+				Double rand = rng.NextDouble();
+				if( rand > 0.9d ) // 10% chance
+				{
+					yield return typeof(void);
+				}
+				else if( rand > 0.4d ) // 50% chance of String
+				{
+					yield return typeof(String);
+				}
+				else // 40% chance of Int32
+				{
+					yield return typeof(Int32);
+				}
+			}
+		}
+
+		private static String CreateCompositeFormatString( Int32 n, Int32 valueCount, Int32 rngSeed, IReadOnlyList<Type> types, StringBuilder /*reusableSB*/ sb )
+		{
+			// `placeholderCount` is also the nth string number.
+
+			Random rng = new Random( Seed: rngSeed );
+
+			Random rngLipsum = new Random( Seed: rngSeed );
+
 			try
 			{
-				Random rng = new Random( Seed: rngSeed );
+				// Prefix format string with `n` and `rngSeed` for reference:
+				_ = sb.AppendFormat( "(n: {0:N0}, rngSeed: {1:d}) ", n, rngSeed );
 
-				for( Int32 i = 0; i < placeholderCount; i++ )
+				for( Int32 i = 0; i < valueCount; i++ )
 				{
-					// Append random text:
-					Lipsum.AppendLipsumSubstring( sb, rng );
+					// Append random text literals between placeholders:
+					Lipsum.AppendLipsumSubstring( sb, rngLipsum );
 
 					_ = sb.Append( ' ' );
 
-					AppendCompositePlaceholder(
-						sb   : sb,
-						index: i,
-						align: ( rng.NextDouble() >= 0.50 ) ? ( rng.Next( maxValue: 21 ) ) : (Int32?)null, // 50% chance of rendering composite format alignment
-						fmt  : ( rng.NextDouble() >= 0.25 ) ? ( GetRandomElement( _i32Fmts, rng ) ) : null  // 75% chance of rendering composite format args
-					);
+					if( types[i] == typeof(void) )
+					{
+						AppendCompositePlaceholder(
+							sb   : sb,
+							index: i,
+							align: null,
+							fmt  : null
+						);
+					}
+					else if( types[i] == typeof(String) )
+					{
+						AppendCompositePlaceholder(
+							sb   : sb,
+							index: i,
+							align: ( rng.NextDouble() >= 0.50 ) ? ( rng.Next( maxValue: 21 ) ) : (Int32?)null, // 50% chance of rendering composite format alignment
+							fmt  : null
+						);
+					}
+					else if( types[i] == typeof(Int32) )
+					{
+						AppendCompositePlaceholder(
+							sb   : sb,
+							index: i,
+							align: ( rng.NextDouble() >= 0.50 ) ? ( rng.Next( maxValue: 21 ) ) : (Int32?)null, // 50% chance of rendering composite format alignment
+							fmt  : ( rng.NextDouble() >= 0.25 ) ? ( GetRandomElement( _i32Fmts, rng ) ) : null  // 75% chance of rendering composite format args
+						);
+					}
+					else throw new InvalidOperationException();
 
 					_ = sb.Append( ' ' );
 				}
@@ -119,31 +173,29 @@ namespace StringWriterBench
 			return items[idx];
 		}
 
-		private static Object[] CreateCompositeFormatStringArgs( Int32 length, Int32 rngSeed )
+		private static Object[] CreateCompositeFormatStringArgs( Int32 n, Int32 valueCount, Int32 rngSeed, IReadOnlyList<Type> types )
 		{
-			if( length == 0 ) return Array.Empty<Object>();
+			if( valueCount == 0 ) return Array.Empty<Object>();
 
 			Random rng = new Random( Seed: rngSeed );
 
-			// Use the rngSeed for `compositeFormatArgs[0]` as proof of consistent rng values.
+			Object[] compositeFormatArgs = new Object[ valueCount ];
 
-			Object[] compositeFormatArgs = new Object[ length ];
-			compositeFormatArgs[0] = rngSeed;
-			for( Int32 i = 1; i < length; i++ )
+			for( Int32 i = 0; i < valueCount; i++ )
 			{
-				Double rand = rng.NextDouble();
-				if( rand > 0.9d ) // 10% chance
+				if( types[i] == typeof(void) )
 				{
 					compositeFormatArgs[i] = null;
 				}
-				else if( rand > 0.4d ) // 50% chance of String
+				else if( types[i] == typeof(String) )
 				{
 					compositeFormatArgs[i] = Lipsum.GetLipsumSubstring( rng );
 				}
-				else // 40% chance of Int32
+				else if( types[i] == typeof(Int32) )
 				{
 					compositeFormatArgs[i] = rng.Next();
 				}
+				else throw new InvalidOperationException();
 			}
 
 			return compositeFormatArgs;

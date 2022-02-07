@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StringWriterBench": {
+      "commandName": "Project",
+      "commandLineArgs": "hmm"
+    }
+  }
+}
