@@ -1,0 +1,312 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 3 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+BuildScript: C:\Users\David\Desktop\2022\2022-02-07 - StringWriter\vs\StringWriterBench\StringWriterBenchNetFx48\bin\Release\60a053cb-2b00-4523-a2d0-d3eb5bce62d3.bat
+// ***** Done, took 00:00:01 (1.58 sec)   *****
+// Found 3 benchmarks:
+//   Program.UseStringBuilder: DefaultJob
+//   Program.UseStringWriter: DefaultJob
+//   Program.UseMyStringWriter: DefaultJob
+
+// **************************
+// Benchmark: Program.UseStringBuilder: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: C:\Users\David\Desktop\2022\2022-02-07 - StringWriter\vs\StringWriterBench\StringWriterBenchNetFx48\bin\Release\60a053cb-2b00-4523-a2d0-d3eb5bce62d3.exe --benchmarkName "StringWriterBench.Program.UseStringBuilder" --job "Default" --benchmarkId 0 in 
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// Runtime=.NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT
+// GC=Concurrent Workstation
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 142800.00 ns, 142.8000 us/op
+WorkloadJitting  1: 1 op, 83529900.00 ns, 83.5299 ms/op
+
+WorkloadPilot    1: 2 op, 160818600.00 ns, 80.4093 ms/op
+WorkloadPilot    2: 3 op, 263419800.00 ns, 87.8066 ms/op
+WorkloadPilot    3: 4 op, 346624700.00 ns, 86.6562 ms/op
+WorkloadPilot    4: 5 op, 426801200.00 ns, 85.3602 ms/op
+WorkloadPilot    5: 6 op, 521308500.00 ns, 86.8848 ms/op
+
+WorkloadWarmup   1: 6 op, 518728400.00 ns, 86.4547 ms/op
+WorkloadWarmup   2: 6 op, 517625600.00 ns, 86.2709 ms/op
+WorkloadWarmup   3: 6 op, 519321400.00 ns, 86.5536 ms/op
+WorkloadWarmup   4: 6 op, 516859100.00 ns, 86.1432 ms/op
+WorkloadWarmup   5: 6 op, 518955600.00 ns, 86.4926 ms/op
+WorkloadWarmup   6: 6 op, 522736200.00 ns, 87.1227 ms/op
+WorkloadWarmup   7: 6 op, 515463900.00 ns, 85.9107 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 6 op, 518971900.00 ns, 86.4953 ms/op
+WorkloadActual   2: 6 op, 514767000.00 ns, 85.7945 ms/op
+WorkloadActual   3: 6 op, 532257600.00 ns, 88.7096 ms/op
+WorkloadActual   4: 6 op, 516686600.00 ns, 86.1144 ms/op
+WorkloadActual   5: 6 op, 522417800.00 ns, 87.0696 ms/op
+WorkloadActual   6: 6 op, 528869700.00 ns, 88.1450 ms/op
+WorkloadActual   7: 6 op, 517300700.00 ns, 86.2168 ms/op
+WorkloadActual   8: 6 op, 521225900.00 ns, 86.8710 ms/op
+WorkloadActual   9: 6 op, 520522100.00 ns, 86.7537 ms/op
+WorkloadActual  10: 6 op, 517095000.00 ns, 86.1825 ms/op
+WorkloadActual  11: 6 op, 521751500.00 ns, 86.9586 ms/op
+WorkloadActual  12: 6 op, 516267600.00 ns, 86.0446 ms/op
+WorkloadActual  13: 6 op, 519899200.00 ns, 86.6499 ms/op
+WorkloadActual  14: 6 op, 520831500.00 ns, 86.8053 ms/op
+WorkloadActual  15: 6 op, 521075300.00 ns, 86.8459 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 6 op, 518971900.00 ns, 86.4953 ms/op
+WorkloadResult   2: 6 op, 514767000.00 ns, 85.7945 ms/op
+WorkloadResult   3: 6 op, 516686600.00 ns, 86.1144 ms/op
+WorkloadResult   4: 6 op, 522417800.00 ns, 87.0696 ms/op
+WorkloadResult   5: 6 op, 517300700.00 ns, 86.2168 ms/op
+WorkloadResult   6: 6 op, 521225900.00 ns, 86.8710 ms/op
+WorkloadResult   7: 6 op, 520522100.00 ns, 86.7537 ms/op
+WorkloadResult   8: 6 op, 517095000.00 ns, 86.1825 ms/op
+WorkloadResult   9: 6 op, 521751500.00 ns, 86.9586 ms/op
+WorkloadResult  10: 6 op, 516267600.00 ns, 86.0446 ms/op
+WorkloadResult  11: 6 op, 519899200.00 ns, 86.6499 ms/op
+WorkloadResult  12: 6 op, 520831500.00 ns, 86.8053 ms/op
+WorkloadResult  13: 6 op, 521075300.00 ns, 86.8459 ms/op
+GC:  45 42 2 272995100 6
+Threading:  0 0 6
+
+// AfterAll
+// Benchmark Process 19624 has exited with code 0.
+
+Mean = 86.523 ms, StdErr = 0.113 ms (0.13%), N = 13, StdDev = 0.408 ms
+Min = 85.795 ms, Q1 = 86.183 ms, Median = 86.650 ms, Q3 = 86.846 ms, Max = 87.070 ms
+IQR = 0.663 ms, LowerFence = 85.187 ms, UpperFence = 87.841 ms
+ConfidenceInterval = [86.034 ms; 87.012 ms] (CI 99.9%), Margin = 0.489 ms (0.57% of Mean)
+Skewness = -0.31, Kurtosis = 1.51, MValue = 2
+
+// **************************
+// Benchmark: Program.UseStringWriter: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: C:\Users\David\Desktop\2022\2022-02-07 - StringWriter\vs\StringWriterBench\StringWriterBenchNetFx48\bin\Release\60a053cb-2b00-4523-a2d0-d3eb5bce62d3.exe --benchmarkName "StringWriterBench.Program.UseStringWriter" --job "Default" --benchmarkId 1 in 
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// Runtime=.NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT
+// GC=Concurrent Workstation
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 150700.00 ns, 150.7000 us/op
+WorkloadJitting  1: 1 op, 86015900.00 ns, 86.0159 ms/op
+
+WorkloadPilot    1: 2 op, 167455400.00 ns, 83.7277 ms/op
+WorkloadPilot    2: 3 op, 267634700.00 ns, 89.2116 ms/op
+WorkloadPilot    3: 4 op, 348012700.00 ns, 87.0032 ms/op
+WorkloadPilot    4: 5 op, 447165100.00 ns, 89.4330 ms/op
+WorkloadPilot    5: 6 op, 536588400.00 ns, 89.4314 ms/op
+
+WorkloadWarmup   1: 6 op, 536292800.00 ns, 89.3821 ms/op
+WorkloadWarmup   2: 6 op, 533616000.00 ns, 88.9360 ms/op
+WorkloadWarmup   3: 6 op, 535466100.00 ns, 89.2444 ms/op
+WorkloadWarmup   4: 6 op, 534611800.00 ns, 89.1020 ms/op
+WorkloadWarmup   5: 6 op, 534609700.00 ns, 89.1016 ms/op
+WorkloadWarmup   6: 6 op, 532798400.00 ns, 88.7997 ms/op
+WorkloadWarmup   7: 6 op, 532506000.00 ns, 88.7510 ms/op
+WorkloadWarmup   8: 6 op, 533531400.00 ns, 88.9219 ms/op
+WorkloadWarmup   9: 6 op, 528815200.00 ns, 88.1359 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 6 op, 546770800.00 ns, 91.1285 ms/op
+WorkloadActual   2: 6 op, 532197800.00 ns, 88.6996 ms/op
+WorkloadActual   3: 6 op, 534055800.00 ns, 89.0093 ms/op
+WorkloadActual   4: 6 op, 529086800.00 ns, 88.1811 ms/op
+WorkloadActual   5: 6 op, 535645400.00 ns, 89.2742 ms/op
+WorkloadActual   6: 6 op, 536603800.00 ns, 89.4340 ms/op
+WorkloadActual   7: 6 op, 540579800.00 ns, 90.0966 ms/op
+WorkloadActual   8: 6 op, 532917600.00 ns, 88.8196 ms/op
+WorkloadActual   9: 6 op, 560627500.00 ns, 93.4379 ms/op
+WorkloadActual  10: 6 op, 531325100.00 ns, 88.5542 ms/op
+WorkloadActual  11: 6 op, 535143100.00 ns, 89.1905 ms/op
+WorkloadActual  12: 6 op, 535190100.00 ns, 89.1984 ms/op
+WorkloadActual  13: 6 op, 532022700.00 ns, 88.6705 ms/op
+WorkloadActual  14: 6 op, 550174700.00 ns, 91.6958 ms/op
+WorkloadActual  15: 6 op, 534422600.00 ns, 89.0704 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 6 op, 546770800.00 ns, 91.1285 ms/op
+WorkloadResult   2: 6 op, 532197800.00 ns, 88.6996 ms/op
+WorkloadResult   3: 6 op, 534055800.00 ns, 89.0093 ms/op
+WorkloadResult   4: 6 op, 529086800.00 ns, 88.1811 ms/op
+WorkloadResult   5: 6 op, 535645400.00 ns, 89.2742 ms/op
+WorkloadResult   6: 6 op, 536603800.00 ns, 89.4340 ms/op
+WorkloadResult   7: 6 op, 540579800.00 ns, 90.0966 ms/op
+WorkloadResult   8: 6 op, 532917600.00 ns, 88.8196 ms/op
+WorkloadResult   9: 6 op, 531325100.00 ns, 88.5542 ms/op
+WorkloadResult  10: 6 op, 535143100.00 ns, 89.1905 ms/op
+WorkloadResult  11: 6 op, 535190100.00 ns, 89.1984 ms/op
+WorkloadResult  12: 6 op, 532022700.00 ns, 88.6705 ms/op
+WorkloadResult  13: 6 op, 534422600.00 ns, 89.0704 ms/op
+GC:  98 95 2 576650312 6
+Threading:  0 0 6
+
+// AfterAll
+// Benchmark Process 16228 has exited with code 0.
+
+Mean = 89.179 ms, StdErr = 0.208 ms (0.23%), N = 13, StdDev = 0.751 ms
+Min = 88.181 ms, Q1 = 88.700 ms, Median = 89.070 ms, Q3 = 89.274 ms, Max = 91.128 ms
+IQR = 0.575 ms, LowerFence = 87.838 ms, UpperFence = 90.136 ms
+ConfidenceInterval = [88.280 ms; 90.078 ms] (CI 99.9%), Margin = 0.899 ms (1.01% of Mean)
+Skewness = 1.21, Kurtosis = 3.98, MValue = 2
+
+// **************************
+// Benchmark: Program.UseMyStringWriter: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: C:\Users\David\Desktop\2022\2022-02-07 - StringWriter\vs\StringWriterBench\StringWriterBenchNetFx48\bin\Release\60a053cb-2b00-4523-a2d0-d3eb5bce62d3.exe --benchmarkName "StringWriterBench.Program.UseMyStringWriter" --job "Default" --benchmarkId 2 in 
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// Runtime=.NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT
+// GC=Concurrent Workstation
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 148500.00 ns, 148.5000 us/op
+WorkloadJitting  1: 1 op, 84680000.00 ns, 84.6800 ms/op
+
+WorkloadPilot    1: 2 op, 162549100.00 ns, 81.2746 ms/op
+WorkloadPilot    2: 3 op, 260508900.00 ns, 86.8363 ms/op
+WorkloadPilot    3: 4 op, 345135800.00 ns, 86.2840 ms/op
+WorkloadPilot    4: 5 op, 440471100.00 ns, 88.0942 ms/op
+WorkloadPilot    5: 6 op, 535566500.00 ns, 89.2611 ms/op
+
+WorkloadWarmup   1: 6 op, 531488800.00 ns, 88.5815 ms/op
+WorkloadWarmup   2: 6 op, 521238300.00 ns, 86.8731 ms/op
+WorkloadWarmup   3: 6 op, 517661800.00 ns, 86.2770 ms/op
+WorkloadWarmup   4: 6 op, 536289500.00 ns, 89.3816 ms/op
+WorkloadWarmup   5: 6 op, 518806100.00 ns, 86.4677 ms/op
+WorkloadWarmup   6: 6 op, 514341300.00 ns, 85.7236 ms/op
+WorkloadWarmup   7: 6 op, 514509800.00 ns, 85.7516 ms/op
+WorkloadWarmup   8: 6 op, 519841200.00 ns, 86.6402 ms/op
+WorkloadWarmup   9: 6 op, 515954500.00 ns, 85.9924 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 6 op, 517377700.00 ns, 86.2296 ms/op
+WorkloadActual   2: 6 op, 512612700.00 ns, 85.4355 ms/op
+WorkloadActual   3: 6 op, 508105800.00 ns, 84.6843 ms/op
+WorkloadActual   4: 6 op, 513436700.00 ns, 85.5728 ms/op
+WorkloadActual   5: 6 op, 517410100.00 ns, 86.2350 ms/op
+WorkloadActual   6: 6 op, 520912700.00 ns, 86.8188 ms/op
+WorkloadActual   7: 6 op, 515514900.00 ns, 85.9192 ms/op
+WorkloadActual   8: 6 op, 514291800.00 ns, 85.7153 ms/op
+WorkloadActual   9: 6 op, 520528400.00 ns, 86.7547 ms/op
+WorkloadActual  10: 6 op, 520360800.00 ns, 86.7268 ms/op
+WorkloadActual  11: 6 op, 513520600.00 ns, 85.5868 ms/op
+WorkloadActual  12: 6 op, 519697000.00 ns, 86.6162 ms/op
+WorkloadActual  13: 6 op, 514345700.00 ns, 85.7243 ms/op
+WorkloadActual  14: 6 op, 518674600.00 ns, 86.4458 ms/op
+WorkloadActual  15: 6 op, 518918300.00 ns, 86.4864 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 6 op, 517377700.00 ns, 86.2296 ms/op
+WorkloadResult   2: 6 op, 512612700.00 ns, 85.4355 ms/op
+WorkloadResult   3: 6 op, 508105800.00 ns, 84.6843 ms/op
+WorkloadResult   4: 6 op, 513436700.00 ns, 85.5728 ms/op
+WorkloadResult   5: 6 op, 517410100.00 ns, 86.2350 ms/op
+WorkloadResult   6: 6 op, 520912700.00 ns, 86.8188 ms/op
+WorkloadResult   7: 6 op, 515514900.00 ns, 85.9192 ms/op
+WorkloadResult   8: 6 op, 514291800.00 ns, 85.7153 ms/op
+WorkloadResult   9: 6 op, 520528400.00 ns, 86.7547 ms/op
+WorkloadResult  10: 6 op, 520360800.00 ns, 86.7268 ms/op
+WorkloadResult  11: 6 op, 513520600.00 ns, 85.5868 ms/op
+WorkloadResult  12: 6 op, 519697000.00 ns, 86.6162 ms/op
+WorkloadResult  13: 6 op, 514345700.00 ns, 85.7243 ms/op
+WorkloadResult  14: 6 op, 518674600.00 ns, 86.4458 ms/op
+WorkloadResult  15: 6 op, 518918300.00 ns, 86.4864 ms/op
+GC:  45 42 2 273067520 6
+Threading:  0 0 6
+
+// AfterAll
+// Benchmark Process 10304 has exited with code 0.
+
+Mean = 86.063 ms, StdErr = 0.157 ms (0.18%), N = 15, StdDev = 0.609 ms
+Min = 84.684 ms, Q1 = 85.651 ms, Median = 86.230 ms, Q3 = 86.551 ms, Max = 86.819 ms
+IQR = 0.900 ms, LowerFence = 84.301 ms, UpperFence = 87.902 ms
+ConfidenceInterval = [85.412 ms; 86.715 ms] (CI 99.9%), Margin = 0.651 ms (0.76% of Mean)
+Skewness = -0.54, Kurtosis = 2.33, MValue = 2
+
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\StringWriterBench.Program-report.csv
+  BenchmarkDotNet.Artifacts\results\StringWriterBench.Program-report-github.md
+  BenchmarkDotNet.Artifacts\results\StringWriterBench.Program-report.html
+
+// * Detailed results *
+Program.UseStringBuilder: DefaultJob
+Runtime = .NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT; GC = Concurrent Workstation
+Mean = 86.523 ms, StdErr = 0.113 ms (0.13%), N = 13, StdDev = 0.408 ms
+Min = 85.795 ms, Q1 = 86.183 ms, Median = 86.650 ms, Q3 = 86.846 ms, Max = 87.070 ms
+IQR = 0.663 ms, LowerFence = 85.187 ms, UpperFence = 87.841 ms
+ConfidenceInterval = [86.034 ms; 87.012 ms] (CI 99.9%), Margin = 0.489 ms (0.57% of Mean)
+Skewness = -0.31, Kurtosis = 1.51, MValue = 2
+-------------------- Histogram --------------------
+[85.567 ms ; 87.298 ms) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+Program.UseStringWriter: DefaultJob
+Runtime = .NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT; GC = Concurrent Workstation
+Mean = 89.179 ms, StdErr = 0.208 ms (0.23%), N = 13, StdDev = 0.751 ms
+Min = 88.181 ms, Q1 = 88.700 ms, Median = 89.070 ms, Q3 = 89.274 ms, Max = 91.128 ms
+IQR = 0.575 ms, LowerFence = 87.838 ms, UpperFence = 90.136 ms
+ConfidenceInterval = [88.280 ms; 90.078 ms] (CI 99.9%), Margin = 0.899 ms (1.01% of Mean)
+Skewness = 1.21, Kurtosis = 3.98, MValue = 2
+-------------------- Histogram --------------------
+[88.025 ms ; 91.547 ms) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+Program.UseMyStringWriter: DefaultJob
+Runtime = .NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT; GC = Concurrent Workstation
+Mean = 86.063 ms, StdErr = 0.157 ms (0.18%), N = 15, StdDev = 0.609 ms
+Min = 84.684 ms, Q1 = 85.651 ms, Median = 86.230 ms, Q3 = 86.551 ms, Max = 86.819 ms
+IQR = 0.900 ms, LowerFence = 84.301 ms, UpperFence = 87.902 ms
+ConfidenceInterval = [85.412 ms; 86.715 ms] (CI 99.9%), Margin = 0.651 ms (0.76% of Mean)
+Skewness = -0.54, Kurtosis = 2.33, MValue = 2
+-------------------- Histogram --------------------
+[84.360 ms ; 87.143 ms) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19042.1466 (20H2/October2020Update)
+Intel Core i7-10700K CPU 3.80GHz, 1 CPU, 16 logical and 8 physical cores
+  [Host]     : .NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT
+  DefaultJob : .NET Framework 4.8 (4.8.4420.0), X86 LegacyJIT
+
+
+|            Method |     Mean |    Error |   StdDev |      Gen 0 |      Gen 1 |    Gen 2 | Allocated |
+|------------------ |---------:|---------:|---------:|-----------:|-----------:|---------:|----------:|
+|  UseStringBuilder | 86.52 ms | 0.489 ms | 0.408 ms |  7500.0000 |  7000.0000 | 333.3333 |     43 MB |
+|   UseStringWriter | 89.18 ms | 0.899 ms | 0.751 ms | 16333.3333 | 15833.3333 | 333.3333 |     92 MB |
+| UseMyStringWriter | 86.06 ms | 0.651 ms | 0.609 ms |  7500.0000 |  7000.0000 | 333.3333 |     43 MB |
+
+// * Hints *
+Outliers
+  Program.UseStringBuilder: Default -> 2 outliers were removed (88.14 ms, 88.71 ms)
+  Program.UseStringWriter: Default  -> 2 outliers were removed (91.70 ms, 93.44 ms)
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen 0     : GC Generation 0 collects per 1000 operations
+  Gen 1     : GC Generation 1 collects per 1000 operations
+  Gen 2     : GC Generation 2 collects per 1000 operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+// ** Remained 0 benchmark(s) to run **
+Run time: 00:00:53 (53.5 sec), executed benchmarks: 3
+
+Global total time: 00:00:55 (55.08 sec), executed benchmarks: 3
+// * Artifacts cleanup *
